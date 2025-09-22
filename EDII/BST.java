@@ -39,10 +39,20 @@ public class BST extends BinaryTree{
     }
 
     public void clearall(){
-        BTNode min_esq = findMin(getRoot());
-        BTNode max_dir = findMax(getRoot());
+        this.setRoot(clearAllHelper(getRoot()));
+    }
 
-        
+    private BTNode clearAllHelper(BTNode node){
+        if (node == null){
+            return null;
+        }
+        node.setLeft(clearAllHelper(node.getLeft()));
+        node.setRight(clearAllHelper(node.getRight()));
+        node.setParent(null);
+        node.setLeft(null);
+        node.setRight(null);
+
+        return null;
     }
 
     public BTNode remover(BTNode node, int data){
