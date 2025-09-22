@@ -33,6 +33,23 @@ public class BinaryTree {
 		return root;
 	}
 
+	public void isComplete(){
+		
+	}
+
+	public boolean isFull(){
+		return true;		
+	}
+
+	public boolean isFullHelper(BTNode node){
+		if(node.getDegree()==0){
+			return true;
+		} else if (node.getDegree()==2){
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public void setRoot(BTNode root) {
 		this.root = root;

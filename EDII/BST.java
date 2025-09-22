@@ -30,13 +30,71 @@ public class BST extends BinaryTree{
             BTNode newNode = new BTNode(data);
             newNode.setParent(parent);
             return newNode;
-        } else if(node.getData()<data){
-            node.setLeft(insertHelper(node.getLeft(), node, data));
         } else if(node.getData()>data){
+            node.setLeft(insertHelper(node.getLeft(), node, data));
+        } else if(node.getData()<data){
             node.setRight(insertHelper(node.getLeft(), node, data));
         }
         return node;
     }
+
+    public void clearall(){
+        BTNode min_esq = findMin(getRoot());
+        BTNode max_dir = findMax(getRoot());
+
+        
+    }
+
+    public BTNode remover(BTNode node, int data){
+        if (node == null){
+            return null;
+        } else if (data<node.getData()){
+            node.setLeft(remove(node.getLeft(), data));
+        } else if (data>node.getData()){
+            node.setRight(remove(node.getRight(), data));
+        } else {
+            if(node.getRight()==null){
+                return node.getLeft();
+            } else if(node.getLeft()==null){
+                return node.getRight();
+            } else {
+                BTNode temp = findMinn(node.getRight());
+                node.setData(temp.getData());
+                node.setRight(remove(node.getRight(), temp.getData()));
+            
+            }
+            
+        }
+        return node;
+        
+    }
+
+    public BTNode findMinn(BTNode node){
+        while(node.getLeft() !=null){
+            node = node.getLeft();
+        }
+        return node;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public BTNode remove(BTNode node, int data){
         if (node == null){
