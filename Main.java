@@ -34,6 +34,7 @@
 
 
 import EDII.BTNode;
+import EDIII.BNode;
 import EDII.BinaryTree;
 import EDII.BST;
 
@@ -41,9 +42,53 @@ public class Main {
 
 	public static void main(String[] args) {
 		// 1. Instanciando uma nova BST
-        BST bst = new BST();
+        // 1. Criando os nós da árvore
+        System.out.println("--- Criando a Árvore ---");
+        BNode a = new BNode(10);
+        BNode b = new BNode(5, a);
+        BNode c = new BNode(15, a);
+        BNode d = new BNode(2, b);
+        BNode e = new BNode(8, b);
+
+        // Conectando os nós manualmente
+        a.setLeft(b);
+        a.setRight(c);
+        b.setLeft(d);
+        b.setRight(e);
         
-        System.out.println("--- Testando Inserção ---");
+        System.out.println("Árvore criada com sucesso!");
+
+        // 2. Testando os métodos isRoot e isLeaf
+        System.out.println("\n--- Testando isRoot e isLeaf ---");
+        System.out.println("Nó A (10) é raiz? " + a.isRoot()); // Deve ser true
+        System.out.println("Nó B (5) é folha? " + b.isLeaf()); // Deve ser false
+        System.out.println("Nó D (2) é folha? " + d.isLeaf()); // Deve ser true
+
+        // 3. Testando o método getDegree
+        System.out.println("\n--- Testando getDegree ---");
+        System.out.println("Grau do nó A (10): " + a.getDegree()); // Deve ser 2
+        System.out.println("Grau do nó B (5): " + b.getDegree()); // Deve ser 2
+        System.out.println("Grau do nó C (15): " + c.getDegree()); // Deve ser 0
+
+        // 4. Testando o método getLevel
+        System.out.println("\n--- Testando getLevel ---");
+        System.out.println("Nível do nó A (10): " + a.getLevel()); // Deve ser 0
+        System.out.println("Nível do nó B (5): " + b.getLevel()); // Deve ser 1
+        System.out.println("Nível do nó D (2): " + d.getLevel()); // Deve ser 2
+
+        // 5. Testando o método getHeight
+        // Nota: A sua implementação de getHeight no BNode está com erros de sintaxe.
+        // Se você corrigiu, este teste funcionará.
+        System.out.println("\n--- Testando getHeight ---");
+        System.out.println("Altura do nó A (10): " + a.getHeight()); // Deve ser 2
+        System.out.println("Altura do nó B (5): " + b.getHeight()); // Deve ser 1
+        System.out.println("Altura do nó D (2): " + d.getHeight()); // Deve ser 0
+        
+    
+
+
+
+        /* System.out.println("--- Testando Inserção ---");
         System.out.println("Inserindo os seguintes valores: 20, 10, 30, 5, 15, 25, 35, 28");
         
         bst.insert(20);
@@ -115,7 +160,7 @@ public class Main {
 		System.out.println("Por nível: " + tree.levelOrderTraversal());
 		
 		// Confira se a árvore foi construída como solicitado no exemplo e confira se os
-		// métodos de percurso estão corretos. */
+		// métodos de percurso estão corretos. */ 
 	}
 
 }
