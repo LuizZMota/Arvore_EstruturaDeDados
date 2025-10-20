@@ -71,7 +71,7 @@ public class BinaryTree {
 		//TODO
 		if (node == null){
 			return 0;
-		}
+		} 
 		int currentDegree = 0;
 		if(node.getLeft()!=null){
 			currentDegree++;
@@ -85,12 +85,15 @@ public class BinaryTree {
 		return Math.max(currentDegree, Math.max(leftDegree, rightDegree));
 	}
 
-	public int getHeight() {
-		if (isEmpty()) {
+
+	public int height
+
+	public int getHeight(BNode node) {
+		if (node == null) {
 			return -1;
 		}
 
-		return root.getHeight();
+		return 1 + Math.max(getHeight(node.getleft), getHeight(node.getRight()));
 	}
 
 	public String inOrderTraversal() {

@@ -38,6 +38,25 @@ public class BST extends BinaryTree{
         return node;
     }
 
+    public void clearAll(){
+        this.setRoot(clearAllHelper(getRoot()));
+    }
+
+    public void clearAllHelper(BNode node){
+        if(node == null){
+            return;
+        }
+        node.setLeft(clearAllHelper(node.getleft()));
+        
+
+    }
+
+
+
+
+
+
+
     public void clearall(){
         this.setRoot(clearAllHelper(getRoot()));
     }

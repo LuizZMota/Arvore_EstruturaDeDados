@@ -52,7 +52,22 @@ public class BinaryTree {
         if (isEmpty()){
             return 0;
         }
-        return getRoot().getHeight();
+        return getRoot().getHeight() + 1;
+    }
+
+    public boolean search(int data){
+        BNode atual;
+        atual = root;
+        while(atual!=null){
+            if(data == atual.getData()){
+                return true;
+            } else if(data<atual.getData()){
+                atual = atual.getleft();
+            } else if(data>atual.getData()){
+                atual = atual.getRight();
+            } 
+        }
+        return false;
     }
 
     public String inOrderTraversal(){
@@ -108,6 +123,14 @@ public class BinaryTree {
         sb.append(node.getData()).append("");
 
         return sb.toString();
+    }
+
+    public BNode parenteses(BNode node){
+        if(node == null){
+            return;
+        }
+
+
     }
 
     public BNode search(BNode node, int data){
@@ -170,6 +193,46 @@ public class BinaryTree {
         return node;
     }
     
+
+    public Node remover(BNode node, int data){
+        if (node == null){
+            return null;
+        } else if(data<node.getData()){
+            node.setLeft(remover(node.getLeft(), data));
+        } else if(data>node.getData()){
+            node.setRight(remover(node.getRight(), data));
+        } else {
+            if (node.getRight == null){
+                return node.getLeft();
+            } else if (node.getLeft()==null){
+                return node.getRight();
+            } else {
+                BNode temp = findMin(node.getRight());
+                node.setData(temp.getData);
+                node.setRight(remover(node.getRight, temp.getData()));
+            }
+        }
+        return node;
+    }
+
+    public BNode search(BNode node, int data){
+        if (node ==null){
+            return null;
+        } else if(data==node.getData()){
+            return node;
+        } else if(data<node.getData()){
+            return search(node.getleft(), data);
+        } else {
+            return search(node.getRight(), data);
+        }
+    }
+
+    public BNode insert(int data){
+        return this.setRoot(insertHelper(root, data, null));
+    }
+    public BNode insertHelper(BNode node, int data, BNode parent){
+        if (node)
+    }
     @Override
 	public String toString() {
 		return "BinaryTree - isEmpty(): " + isEmpty()
